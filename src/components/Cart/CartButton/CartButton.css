@@ -1,0 +1,236 @@
+.cart-button {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  height: 56px;
+  min-width: 11rem;
+  max-width: 13rem;
+  padding: 0 15px;
+  border-radius: 28px;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  background: hsl(32, 99%, 69%);
+  color: black;
+}
+
+.cart-button:hover {
+  background: hsl(32, 99%, 74%);
+}
+
+.remove-button {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  min-height: 48px;
+  max-width: 10rem;
+  min-width: 8rem;
+  width: 10rem;
+  padding: 5px 30px;
+  border-radius: 28px;
+  color: #fff;
+  cursor: pointer;
+  background: hsl(32, 99%, 69%);
+  color: black;
+}
+
+.remove-button:hover {
+  background: hsl(32, 99%, 74%);
+}
+
+.saving-button {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  height: 52px;
+  width: 100%;
+  padding: 0 35px;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  background: hsl(32, 99%, 69%);
+  color: black;
+}
+
+.saving-button:hover {
+  background: hsl(32, 99%, 74%);
+}
+
+.saving-button:disabled {
+background: hsl(32, 99%, 80%);
+color: hsl(0, 0%, 25%);
+cursor: not-allowed; 
+}
+
+
+.text {
+  display: block;
+  white-space: nowrap;
+  overflow: auto;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+@keyframes textAnimation {
+  0%,
+  30% {
+    transform: translateX(-15px);
+  }
+  39.9% {
+    transform: translate(0, 100px);
+  }
+  40% {
+    transform: translate(10px, 80px);
+  }
+  40.2% {
+    transform: translate(10px, -29px);
+  }
+  45%,
+  95% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes iconAnimation {
+  0%,
+  5% {
+    transform: translateX(-15px);
+  }
+  20%,
+  30% {
+    transform: translateX(-250px);
+  }
+  40% {
+    transform: translate(200px, 0) scale(2);
+  }
+  40.1% {
+    transform: translate(200px, -60px) scale(1);
+  }
+  40.2% {
+    transform: translate(0, -30px);
+  }
+  45%,
+  95% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+button.sending .text {
+  animation: textAnimation 3s both;
+}
+
+button.sending .icon {
+  animation: iconAnimation 3s both;
+}
+
+button.removing .text {
+  animation: textAnimation 3s both;
+}
+
+button.removing .icon {
+  animation: iconAnimation 3s both;
+}
+
+
+@media (max-width: 1024px) {
+  .text {
+    font-size: 15px;
+  }
+
+    .remove-button {
+    max-width: 300px;
+  }
+
+
+   .saving-button {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .text {
+    font-size: 13px;
+  }
+
+   .saving-button {
+    max-width: 100%;
+  }
+
+  @keyframes iconAnimationCorta {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  51% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+button.is-adding .icon {
+  position: relative;
+}
+
+button.is-adding .icon > svg {
+  animation: iconAnimationCorta 0.5s;
+}
+
+button.is-removing .icon {
+  position: relative;
+}
+
+button.is-removing .icon > svg {
+  animation: iconAnimationCorta 1s forwards;
+}
+
+button.sending .text {
+  animation: textAnimation 3.5s both;
+}
+
+button.sending .icon {
+  animation: iconAnimation 3.5s both;
+}
+
+}
+
+
+
+@media (max-width: 460px) {
+  .text {
+    font-size: 14px;
+  }
+
+  .saving-button {
+    max-width: 100%;
+  }
+
+   .remove-button {
+    max-width: 100%;
+  }
+
+  }
+   
+

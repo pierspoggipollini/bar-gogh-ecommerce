@@ -1,0 +1,23 @@
+# sessionLogin
+# Called during login or signup to authenticate the user and issue a JWT.
+# Verifies the ID token and generates a session token with a 5-day expiration if the ID token is valid.
+
+# requireAuth
+# Middleware to verify authentication before accessing user information.
+# Checks the presence and validity of the JWT token and retrieves user data.
+
+# verifyAuthentication
+# Helper function to verify the JWT token and retrieve user data from the database.
+# Checks if the token is blacklisted and decodes the JWT token to get the claims.
+
+# getUserDataFromDatabase
+# Retrieves user data from the Firebase Authentication and Firestore database.
+# Constructs a user data object with desired fields and returns it.
+
+# getProfile
+# Endpoint to get user profile.
+# Uses the verified user information from the request to retrieve and return user data.
+
+# sessionLogout
+# Endpoint to log out the user session.
+# Revokes the session token by adding it to a blacklist and returns a success response.

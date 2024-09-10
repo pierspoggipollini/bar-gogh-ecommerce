@@ -1,0 +1,25 @@
+.checkbox_container {
+  cursor: pointer;
+}
+
+.checkbox_container svg {
+  overflow: visible;
+}
+
+.pathTerms {
+  fill: none;
+  stroke: rgb(30 41 59);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke-dasharray 0.5s ease, stroke-dashoffset 0.5s ease;
+  stroke-dasharray: 241 9999999;
+  stroke-dashoffset: 0;
+}
+
+
+.checkbox_container input:checked ~ svg .pathTerms {
+  stroke-dasharray: 70.5096664428715 9999999;
+  stroke-dashoffset: -262.2723388671875;
+}
+

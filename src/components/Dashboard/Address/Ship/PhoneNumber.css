@@ -1,0 +1,91 @@
+.PhoneInputCountry {
+  scale: 1.4;
+  z-index: 1;
+  align-self: center;
+  padding: 5px;
+  margin-left: 10px;
+  outline: none;
+  border-radius: 0.125rem;
+}
+
+.PhoneInputCountry:focus {
+  border-color: #1a202c;
+}
+
+.PhoneInputCountry {
+  position: absolute;
+  left: 5px;
+}
+
+.PhoneInputInput {
+  transition: all ease 300ms;
+  background-color: transparent;
+  outline: none;
+  border-radius: 0.125rem;
+  font-size: 1rem;
+  padding-left: 4.5rem;
+  padding-right: 3rem;
+  height: 52px;
+  width: 50%;
+}
+
+.PhoneInputInput:is(:focus, :isvalid) {
+ @apply ring ring-gray-400 border-gray-500 ring-opacity-60;
+}
+
+ .PhoneInputInput{
+  @apply border-[1.5px] border-gray-900 ;
+} 
+
+@media screen and (max-width: 374px) and (min-width: 320px) {
+  .PhoneInputInput {
+   font-size: 0.875rem;
+  }
+}
+
+
+.PhoneInputInput::placeholder {
+  color: transparent;
+}
+
+.PhoneInputInput:focus::placeholder {
+  color: rgb(100 117 139);
+}
+
+
+.PhoneInputLabel {
+  position: absolute;
+  bottom: 14px;
+  left: 6.3rem;
+  background-color: #f1f5f9;
+  transition: all ease 0.3s;
+  pointer-events: none;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: rgb(100 117 139);
+}
+
+.PhoneInputInput:invalid {
+border: 2px solid rgb(100 117 139);
+}
+
+.PhoneInput:focus-within ~ .PhoneInputLabel,
+.PhoneInput:not(:placeholder-shown) ~ .PhoneInputLabel,
+.PhoneInput:valid ~ .PhoneInputLabel {
+  font-size: 0.75rem;
+  left: 1rem;
+  bottom: 2.35rem;
+  padding: 0.25rem;
+  color: rgb(30 41 59);
+}
+
+/*.PhoneInputInput:not(:placeholder-shown),
+ .PhoneInputInput:focus
+  + .PhoneInputLabel {
+  font-size: 0.75rem; 
+  left: 7rem;
+  bottom: 2.2rem;
+  padding: 0.25rem;
+  color: rgb(100 117 139);
+  opacity: 1;
+}*/

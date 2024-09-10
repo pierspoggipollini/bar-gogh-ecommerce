@@ -1,0 +1,205 @@
+button.navigate {
+  position: relative;
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+
+button.navigate .circle {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  box-shadow: 0 0 1px 1px none;
+  position: relative;
+  display: block;
+  margin: 0;
+  width: 3rem;
+  height: 3rem;
+  background: rgb(226 232 240);
+  border-radius: 1.625rem;
+}
+
+button.navigate .circle .icon {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: hsl(0, 0%, 12%);
+}
+
+button.navigate .circle .icon.arrowRight {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  left: 0.625rem;
+  width: 1.125rem;
+  height: 0.125rem;
+  background: none;
+}
+
+button.navigate .circle .icon.arrowRight::before {
+  position: absolute;
+  content: "";
+  top: -0.29rem;
+  right: 0.0625rem;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-top: 0.125rem solid black;
+  border-right: 0.125rem solid black;
+  transform: rotate(45deg);
+}
+
+button.navigate .button-text {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.65rem 4rem;
+  color: hsl(0, 0%, 12%);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.6;
+  text-transform: uppercase;
+  text-align: left;
+  overflow: hidden;
+  text-wrap: nowrap;
+  overflow: hidden;
+  width: 100%;
+}
+
+button.navigate:hover .circle {
+  max-width: 23rem;
+  width: auto; /* 70 */
+  max-height: 80px;
+  box-shadow: 0 0 10px 2px transparent;
+  background: rgb(226 232 240);
+
+}
+
+.box {
+  position: relative;
+  transform-style: preserve-3d;
+}
+button.navigate:hover .box::before,
+button.navigate:active .box::before {
+  content: "";
+  position: absolute;	
+  inset: 0px;
+  background: conic-gradient(
+    from 90deg at 40% -25%,
+    #990000, /* Tonalità di rosso più chiara */
+    #A50000,
+    #B30000,
+    #C00000,
+    #CC0000,
+    #D90000,
+    #E60000,
+    #F20000,
+    #FF0000,
+    #FF1919,
+    #FF3333,
+    #FF4C4C,
+    #FF6666,
+    #FF7F7F,
+    #A37A88
+  );
+
+  filter: blur(7px);
+  transform: translate3d(0px,0px,-1px);
+  pointer-events: none;
+  border-radius: 1.625rem;
+  
+}
+
+button.navigate:hover .button-text {
+  transform: translate(-0.7rem, 0);
+  padding: 0.75rem 2.5rem;
+}
+
+button.navigate:hover .circle .icon.arrowRight,
+button.navigate:active .circle .icon.arrowRight {
+  transform: translate(100%, 0);
+  transition: all 0.3s;
+ 
+  width: 45%;
+  
+}
+
+button.navigate:active .circle {
+  transform: scale(0.9);
+  transition: all 0.3s;
+  box-shadow: 0 0 10px 2px transparent;
+}
+
+ button.navigate:active .button-text {
+    color: hsl(0, 0%, 17%);
+  }
+
+/* Media query per una larghezza massima di 768px */
+@media (max-width: 768px) {
+  button.navigate .button-text {
+    /* Aggiungi gli stili specifici per la media query */
+    font-size: 14px;
+  }
+    button.navigate:hover .circle {
+    max-width: 20rem;
+    width: 100%;
+    max-height: 80px;
+  
+  }
+
+  button.navigate .button-text {
+    padding: 0.8rem 4rem;
+  }
+
+  button.navigate:hover .button-text {
+  transform: translate(-1rem, 0);
+  padding: .85rem 2rem;
+}
+}
+/* Media query per una larghezza compresa tra 320px e 375px */
+@media (min-width: 320px) and (max-width: 374px) {
+  button.navigate {
+    max-height: 4rem;
+    height: 70px;
+  }
+
+  button.navigate .button-text {
+    font-size: 12px;
+    white-space: nowrap; /* corretto da text-wrap a white-space */
+    overflow: hidden;
+    width: 100%;
+    padding: 1.35rem 4rem;
+    padding: 
+  }
+
+button.navigate:hover .button-text {
+  transform: translate(-1rem, 0);
+  padding: 1.4rem 2rem;
+}
+  button.navigate:hover .circle {
+    max-width: 20rem;
+    width: 100%;
+    max-height: 80px;
+    box-shadow: 0 0 10px 2px white;
+  }
+button:hover .circle .icon.arrowRight,
+button:active .circle .icon.arrowRight {
+  transform: translate(13rem, 0);
+  transition: all 0.3s;
+}
+/*   button.navigate:hover .button-text {
+    transform: translate(-2rem, 0);
+  } */
+
+}

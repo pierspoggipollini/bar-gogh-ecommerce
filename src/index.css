@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Sora", sans-serif;
+  background: #4a2632;
+}
+
+/* main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  transition: background-color 5000s ease-in-out 0s;
+  /*-webkit-box-shadow: 0 0 0px 1000px hsla(33, 41%, 86%, 0) inset !important;*/ /* Cambia questo colore in base al tuo sfondo */
+}
+/* Disabilita l'evidenziazione gialla per il campo di password autofill */
+
+/* figure {
+  overflow: hidden;
+}
+
+figure:hover img {
+  transform: scale(1.1);
+  transition: transform 0.7s ease-in-out;
+}
+
+figcaption {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+figure:hover figcaption {
+  opacity: 1;
+}
+ */
+.MuiRating-iconEmpty:not(.MuiRating-iconFilled) path {
+  fill: rgb(168 162 158);
+}
+
+.body-modal-open {
+  @apply overflow-hidden;
+}
+
+.glassPrimary {
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(5.5px);
+  -webkit-backdrop-filter: blur(5.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.glassForm {
+  background: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  border-radius: 10px;
+}
+
+.dashboardGlass {
+  /* From https://css.glass */
+  background-color: rgba(0, 0, 0, 0.25);
+
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(60px);
+  -webkit-backdrop-filter: blur(14.8px);
+}
+
+
+#cart-notification-root {
+  @apply flex justify-center w-full;
+}
+
+.css-yvetkp-MuiButtonBase-root-MuiIconButton-root {
+  padding: 0px !important;
+}

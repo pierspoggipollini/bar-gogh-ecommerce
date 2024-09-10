@@ -1,0 +1,23 @@
+# App Component
+Purpose: Initializes the application with a configured router.
+Description: Exports the RouterProvider component, which integrates the specified router configuration.
+
+# Root Component
+Purpose: Manages the application's root functionality including Redux state and initial data retrieval.
+Description: Utilizes Redux hooks (useSelector and useDispatch) to manage and fetch the country state. Implements error handling (ErrorBoundary) and loading fallback (Suspense) components.
+
+# Main Function
+Purpose: Entry point of the application.
+Description:
+Initializes the application and serves as its primary entry point.
+Registers custom Swiper elements, facilitating interactive and dynamic UI components.
+Configures Axios defaults to manage authentication and authorization credentials securely.
+Ensures smooth communication between the frontend application and backend services.
+
+# Fallback Component
+Purpose: Provides a UI fallback during component loading.
+Description: Integrated within ErrorBoundary.
+
+# Root Reducer
+Purpose: Consolidates all reducers into a single root reducer.
+Description: Imports and combines individual reducers (userAuthReducer, wishlistReducer, etc.) using combineReducers. Configures persistence via redux-persist with persistReducer and persistStore.
