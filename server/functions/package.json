@@ -9,8 +9,8 @@
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log",
-    "deploy:staging": "firebase use stag && firebase deploy --only functions",
-    "deploy:production": "firebase use prod && firebase deploy --only functions"
+    "deploy:staging": "firebase deploy --only functions -P stag",
+    "deploy:production": "firebase deploy --only functions -P prod"
   },
   "engines": {
     "node": ">=20"
