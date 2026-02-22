@@ -1,6 +1,6 @@
 import axios from "axios";
 import apiBaseUrl from "../config/apiConfig";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 
 // Function to fetch available quantity from the backend API
 const fetchAvailableQuantity = async (productId) => {
@@ -22,21 +22,18 @@ const fetchAvailableQuantity = async (productId) => {
 
 // Custom hook to retrieve the available quantity of a product
 export const useAvailableQuantity = (productId) => {
-  return useQuery(
-    ["availableQuantity", productId], // Unique key for the query cache
-    async () => {
+  return useQuery({
+    queryKey: ["availableQuantity", productId],
+    queryFn: async () => {
       try {
-        const availableQuantity = await fetchAvailableQuantity(productId); // Fetch available quantity using productId
-        
-        return availableQuantity; // Return the fetched available quantity
+        const availableQuantity = await fetchAvailableQuantity(productId);
+        return availableQuantity;
       } catch (error) {
         console.error("Error in useAvailableQuantity hook:", error);
-        return 0; // Return 0 in case of error to handle gracefully
+        return 0;
       }
     },
-    {
-      enabled: !!productId, // Enable the query only when productId is defined
-      retry: false, // Disable automatic retry of the query on error
-    }
-  );
+    enabled: !!productId,
+    retry: false,
+  });
 };
