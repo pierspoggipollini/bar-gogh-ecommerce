@@ -18,6 +18,7 @@ dist-ssr
 
 .firebaserc
 firebase.json
+.firebase/
 prettier.config.js
 postcss.config.js
 .eslintrc.js
