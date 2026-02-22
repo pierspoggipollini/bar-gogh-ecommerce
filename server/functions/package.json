@@ -13,7 +13,7 @@
     "deploy:production": "firebase deploy --only functions -P prod"
   },
   "engines": {
-    "node": ">=20"
+    "node": "22"
   },
   "main": "index.js",
   "dependencies": {

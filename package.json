@@ -16,6 +16,9 @@
     "dev:production": "env-cmd -f .env.prod vite --mode prod",
     "build:production": "env-cmd -f .env.prod vite build --mode prod"
   },
+  "engines": {
+    "node": "22"
+  },
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
