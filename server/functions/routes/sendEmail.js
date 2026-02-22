@@ -1,30 +1,5 @@
 import nodemailer from 'nodemailer';
 
-/* // Configure Mailgun 
-const DOMAIN = process.env.MAILGUN_DOMAIN; 
-const mg = mailgun({ apiKey: process.env.MAILGUN_API_KEY, domain: DOMAIN });
-
-const sendEmail = (receiver_email) => {
-    const data = {
-        from: 'bargogh@gmail.com',
-        to: receiver_email,
-        subject: 'Receipt Confirmation',
-        text: 'Thank you for your message. We have received your email and will respond shortly.',
-        html: `
-    <p>Thank you for your message.</p>
-    <p>We have received your email and will respond shortly.</p>
-    `,
-    };
-
-    mg.messages().send(data, (error, body) => {
-        if (error) {
-            console.log('Error:', error);
-        } else {
-            console.log('Email sent:', body);
-        }
-    });
-}; */
-
 // Configure Nodemailer with your email service and credentials
 const transporter = nodemailer.createTransport({
     port: 465,
@@ -44,16 +19,17 @@ const mailData = (receiver_email, subject, text, html) => ({
     html: html            // HTML content of the email
 });
 
-// Function to send the email
-const sendEmail = (receiver_email, subject, text, html) => {
+// Function to send the email (nodemailer v8 — promise-based API)
+const sendEmail = async (receiver_email, subject, text, html) => {
     const mailOptions = mailData(receiver_email, subject, text, html);
-
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            return console.log('Error:', error);
-        }
+    try {
+        const info = await transporter.sendMail(mailOptions);
         console.log('Email sent:', info.response);
-    });
+        return info;
+    } catch (error) {
+        console.error('Error sending email:', error);
+        throw error;
+    }
 };
 
 export { sendEmail };
