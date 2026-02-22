@@ -1,9 +1,8 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import "swiper/swiper-bundle.css";
 import "swiper/css/pagination";
 import "./swiperStyle.css";
-import "swiper/swiper.min.css";
-import "swiper/css/pagination";
 import * as cartAction from "../../store/cart";
 import OrderSummarySidebar from "./OrdersConfirmation/OrderSummarySidebar";
 import useCurrencyFormatter from "../utilities/currency/useCurrencyFormatter";

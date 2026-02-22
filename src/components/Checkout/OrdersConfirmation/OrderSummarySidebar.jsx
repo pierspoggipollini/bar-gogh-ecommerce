@@ -6,12 +6,11 @@ import {
   itemVariantsFooter,
 } from "../../utilities/variants";
 import { capitalizeFirstLetter } from "../../utilities/capitalizeFirstLetter";
+import "swiper/swiper-bundle.css";
 import "swiper/css/pagination";
 import "../swiperStyle.css";
-import { Pagination } from "swiper";
+import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper.min.css";
-import "swiper/css/pagination";
 import { ItemContainer } from "../ItemContainer";
 import useCurrencyFormatter from "../../utilities/currency/useCurrencyFormatter";
 

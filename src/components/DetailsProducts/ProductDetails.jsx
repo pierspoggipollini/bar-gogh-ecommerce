@@ -1,8 +1,15 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Skeleton} from "@mui/material";
 import { useProductsDetails } from "../../ReactQuery/useProductDetails";
 import { ProductDetailsContainer } from "./ProductDetailsContainer";
+
+// ErrorMessage component to display any errors
+const ErrorMessage = () => (
+  <div className="text-slate-100 my-14" role="alert">
+    Error: {"An unexpected error occurred"}
+  </div>
+);
 
 // ProductDetails component
 const ProductDetails = () => {
@@ -14,12 +21,6 @@ const ProductDetails = () => {
 
   // Fetch product details using a custom hook
   const { isLoading, error, data: productDetails } = useProductsDetails(id);
-
-  // Memoize the result of the useProductsDetails call as long as the id doesn't change
-  const memoizedProductDetails = useMemo(() => {
-    return productDetails;
-  }, [productDetails]);
-
 
   const [wishlistMessage, setWishlistMessage] = useState(false);
 
@@ -46,7 +47,7 @@ const ProductDetails = () => {
           <div className="flex justify-center">
             {isBigScreen ? (
               <Skeleton
-                variant="rect"
+                variant="rectangular"
                 width={350}
                 height={450}
                 animation="wave"
@@ -55,7 +56,7 @@ const ProductDetails = () => {
               />
             ) : (
               <Skeleton
-                variant="rect"
+                variant="rectangular"
                 width={240}
                 height={300}
                 animation="wave"
@@ -181,13 +182,6 @@ const ProductDetails = () => {
     </div>
   );
 
-  // ErrorMessage component to display any errors
-  const ErrorMessage = () => (
-    <div className="text-slate-100 my-14" role="alert">
-      Error: {"An unexpected error occurred"}
-    </div>
-  );
-
   return (
     <>
       {/* Loading skeleton UI when data is still loading */}
@@ -197,11 +191,11 @@ const ProductDetails = () => {
       {!isLoading && error && <ErrorMessage  />}
       
       {/* Display product details if available */}
-      {!isLoading && !error && memoizedProductDetails && (
+      {!isLoading && !error && productDetails && (
         <div className="mx-3 my-14 grid max-w-full grid-cols-1 gap-10 md:my-14 md:grid-cols-2  lg:h-full">
           <ProductDetailsContainer
-            key={memoizedProductDetails.id}
-            product={memoizedProductDetails}
+            key={productDetails.id}
+            product={productDetails}
             selectedQuantity={selectedQuantity}
             onChangeQty={(e) => {
               setSelectedQuantity(parseInt(e.target.value));

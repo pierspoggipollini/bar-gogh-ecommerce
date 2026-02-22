@@ -31,6 +31,9 @@ export default defineConfig({
     react(), // Enable React support
     css  // Enable CSS modules support
   ],
+  optimizeDeps: {
+    exclude: ['swiper'],
+  },
   build: {
     // Other build options can be configured here
   },

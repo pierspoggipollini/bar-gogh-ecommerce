@@ -109,7 +109,7 @@ export const Message = ({
                   <motion.button
                     whileTap={{ scale: 0.95 }}
                     role="button"
-                    aria-label="Close"
+                    arialabel="Close"
                     name="Close"
                     onClick={() => {
                       setIsNotificationVisible(false);
@@ -140,7 +140,7 @@ export const Message = ({
               </motion.span>
               <motion.button
                 role="button"
-                aria-label="Close"
+                ariaLabel="Close"
                 name="Close"
                 className="absolute hover:bg-slate-200 rounded-full right-3 top-1 p-1"
                 onClick={() => {
