@@ -1,5 +1,5 @@
 import React from 'react'
-import { QueryClient, QueryClientProvider } from 'react-query'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 // Create a new instance of QueryClient
 export const queryClient = new QueryClient();

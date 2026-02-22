@@ -1,4 +1,5 @@
-import { useQuery } from "react-query";
+import { useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { useDispatch } from "react-redux";
 import * as userAuthActions from "../store/user-auth";
 import axiosInstance from "../config/axiosInstance";
@@ -33,45 +34,36 @@ export const fetchStripeCustomerId = async () => {
 export const useConditionalUserData = (isAuthenticated) => {
   const dispatch = useDispatch(); // Initialize useDispatch hook to dispatch actions
 
-  return useQuery(
-    ["userData"], // Unique key for the query cache
-    async () => {
-      if (isAuthenticated) {
-        // If user is authenticated, fetch user profile data
-        const jwtToken = localStorage.getItem("session_JWT_Token");
+  const query = useQuery({
+    queryKey: ["userData"],
+    queryFn: async () => {
+      const jwtToken = localStorage.getItem("session_JWT_Token");
 
-        // Assicurati che il token JWT sia valido
-        if (!jwtToken) {
-          console.error("No JWT token found in localStorage");
-          // Gestisci il caso in cui il token non sia presente (opzionale)
-          throw new Error("No JWT token found");
-        }
-
-        if (!jwtToken) {
-          throw new Error("No session token found");
-        }
-
-        const response = await axiosInstance.get("profile");
-        dispatch(userAuthActions.setError(false)); // Reset error state
-        const userData = response.data.user; // Extract user data from response
-        return userData; // Return user data
-      } else {
-        // If user is not authenticated, return null or empty value as per your choice
-        return null;
+      if (!jwtToken) {
+        console.error("No JWT token found in localStorage");
+        throw new Error("No JWT token found");
       }
+
+      const response = await axiosInstance.get("profile");
+      dispatch(userAuthActions.setError(false));
+      const userData = response.data.user;
+      return userData;
     },
-    {
-      enabled: isAuthenticated, // Enable/disable the query based on isAuthenticated flag
-      // Other configuration options can be added as per your needs
-      onSuccess: (data) => {
-        if (data) {
-          dispatch(userAuthActions.setError(false)); // Reset error state
-          dispatch(userAuthActions.setUser({ user: data })); // Set user data in Redux store
-        }
-      },
-      onError: (error) => {
-        dispatch(userAuthActions.setError(true)); // Set error state if there's an error
-      },
-    },
-  );
+    enabled: isAuthenticated,
+  });
+
+  useEffect(() => {
+    if (query.data) {
+      dispatch(userAuthActions.setError(false));
+      dispatch(userAuthActions.setUser({ user: query.data }));
+    }
+  }, [query.data, dispatch]);
+
+  useEffect(() => {
+    if (query.error) {
+      dispatch(userAuthActions.setError(true));
+    }
+  }, [query.error, dispatch]);
+
+  return query;
 };

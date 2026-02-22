@@ -1,6 +1,6 @@
 import axios from "axios";
 import apiBaseUrl from "../config/apiConfig";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import { isCacheExpired } from "./isCacheExpired";
 
 // Function to fetch latest products from the API
@@ -16,9 +16,9 @@ const fetchLatests = async () => {
 
 // Custom hook to use the latest products data with react-query
 export const useLatestProducts = () => {
-  return useQuery(
-    ["latests"], // Unique key for the query cache
-    async () => {
+  return useQuery({
+    queryKey: ["latests"],
+    queryFn: async () => {
       const cachedData = JSON.parse(localStorage.getItem("latests"));
 
       // Decide whether to fetch from API based on cached data expiration or absence
@@ -43,6 +43,6 @@ export const useLatestProducts = () => {
         // Use data from the cache if it's valid and not expired
         return cachedData.data || cachedData;
       }
-    }
-  );
+    },
+  });
 };

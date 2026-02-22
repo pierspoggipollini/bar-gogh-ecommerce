@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import axiosInstance from "../config/axiosInstance";
 
 // Function to fetch orders data from the API
@@ -25,9 +25,9 @@ const fetchOrdersData = async () => {
 // Custom hook to use the orders data with react-query
 export const useOrders = () => {
   // Use react-query's useQuery hook to fetch and manage orders data
-  return useQuery(
-    "orders",
-    async () => {
+  return useQuery({
+    queryKey: ["orders"],
+    queryFn: async () => {
       try {
         // Fetch orders data using the fetchOrdersData function
         const orders = await fetchOrdersData();
@@ -55,8 +55,6 @@ export const useOrders = () => {
         throw new Error(error.message);
       }
     },
-    {
-      retry: 2, //Number of retry attempts in case of failure
-    },
-  );
+    retry: 2,
+  });
 };

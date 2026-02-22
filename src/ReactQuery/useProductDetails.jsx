@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import apiBaseUrl from "../config/apiConfig";
 
 // Function to fetch product details by ID
@@ -17,16 +17,15 @@ export const fetchProductsDetails = async (id) => {
 
 // Custom hook to use the product details data with react-query
 export const useProductsDetails = (id) => {
-  return useQuery(
-    ["productDetails", id], // Unique key for the query cache
-    async () => {
+  return useQuery({
+    queryKey: ["productDetails", id],
+    queryFn: async () => {
       try {
-        const data = await fetchProductsDetails(id); // Call fetchProductsDetails function with the provided ID
-        return data; // Return the fetched data
+        const data = await fetchProductsDetails(id);
+        return data;
       } catch (error) {
-        // Handle the error if necessary
-        throw new Error(error.message); // Throw an Error object with the error message
+        throw new Error(error.message);
       }
-    }
-  );
+    },
+  });
 };

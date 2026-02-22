@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react'
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import apiBaseUrl from '../config/apiConfig';
 import { isCacheExpired } from './isCacheExpired';
 
@@ -42,7 +42,7 @@ export const fetchProducts = async () => {
  */
 
 export const useProducts = () => {
-  return useQuery(["products"], async () => {
+  return useQuery({ queryKey: ["products"], queryFn: async () => {
     const cachedData = JSON.parse(localStorage.getItem("products"));
 
     // Decide se chiamare l'API in base a un intervallo di tempo (ad esempio, ogni 10 minuti)
@@ -64,5 +64,5 @@ export const useProducts = () => {
       // Utilizza i dati dalla cache
       return cachedData.data || cachedData;
     }
-  });
+  } });
 };
